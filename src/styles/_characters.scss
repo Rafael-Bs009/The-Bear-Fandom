@@ -1,0 +1,120 @@
+@use 'variaveis';
+
+.characters {
+    padding: 2vw 5.6vw;
+    max-width: 1400px;
+    margin: 0 auto;
+    
+    h2 {
+        text-align: center;
+        margin-bottom: 24px;
+        letter-spacing: 3px;
+    }
+
+    &__container--img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0;
+        
+
+        &:hover .characters__img:not(:hover) img{
+            mix-blend-mode: luminosity;
+            filter: grayscale(80%);
+            opacity: 0.5;
+            transition: filter 0.5s ease, opacity 0.5s ease;
+        }
+
+
+    }
+
+    &__img {
+        width: 150px;
+        border-radius: 10px;
+        overflow: hidden;
+
+
+        @media (max-width: 768px) {
+            height: 230px;
+            width: 76px;
+        }
+
+        img {
+            border-radius: 10px;
+            transition: transform 0.5s ease, filter 0.5s ease, opacity 0.5s ease;
+
+            @media (max-width: 768px) {
+                height: 230px;
+            }
+
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    }
+
+
+    &__container--bio {
+        height: 0;
+        padding: 20px;
+        margin-top: 20px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        opacity: 0;
+        transition: height 0.8s ease, opacity 0.5s ease;
+
+        &:has(.characters__bio--open) {
+            height: 370px;
+            opacity: 1;
+            transition: height 0.8s ease, opacity .5s ease;
+
+            @media (max-width: 768px) {
+                height: 860px;
+                width: 366.66px;
+            }
+        }
+    }
+    
+    &__bio {
+        height: 100%;
+        padding: 20px;
+        border: solid 1px transparent;
+        border-radius: 10px;
+        position: absolute;
+        visibility: hidden;
+        opacity: 0;
+        transform: scale(0.95);
+        transition: opacity 0.5s ease, visibility 0s linear 0.5s, transform 0.5s ease, border-color 1.8s ease;
+        background-color: rgba(0, 0, 0, 0.384);
+
+
+        h3 {
+            text-align: center;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+
+            @media (max-width: 768px) {
+                margin-bottom: 5px;
+            }
+            
+        }
+
+        p {
+            letter-spacing: 1px;
+        }
+
+
+        &--open {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+            border-color: variaveis.$corBorder;
+            transition: opacity 0.5s ease, visibility 0s linear 0s, transform 0.5s ease, border-color 1.8s ease;
+        }
+    }
+
+}

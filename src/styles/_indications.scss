@@ -1,0 +1,87 @@
+@use 'variaveis';
+
+.indications {
+    padding: 5.6vw;
+
+    h2 {
+        text-align: center;
+        margin-bottom: 24px;
+        letter-spacing: 3px;
+    }
+
+    &__year {
+        margin-bottom: 24px;
+    }
+
+    &__item {
+        background-color: variaveis.$corFundoIndications;
+        margin-bottom: 16px;
+        border-radius: 10px;
+
+        &--award {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+            color: variaveis.$corTextoPrincipal;
+            padding: 24px;
+            display: block;
+            position: relative;
+            cursor: pointer;
+
+            @media (max-width: 768px) {
+                font-size: 16px;
+                padding: 24px 15px 24px 7px;
+                letter-spacing: 1px;
+            }
+
+            &::after {
+                content: '+';
+                position: absolute;
+                top: 0;
+                right: 24px;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                font-size: 40px;
+
+                @media (max-width: 768px) {
+                    font-size: 20px;
+                    right: 10px;
+                }
+            }
+        }
+
+        .text--big {
+            color: variaveis.$corTextoSecundario;
+        }
+
+        &--modality {
+            height: 0;
+            color: black;
+            overflow: hidden;
+            padding: 0 24px;
+            transition: height, .5s ease;
+
+            ul {
+                list-style-type: disc;
+                margin-top: 16px;
+                padding-left: 40px;
+            }
+
+            li {
+                margin-top: 24px;
+            }
+        }
+
+        &--is-open {
+            .indications__item--award::after {
+                content: '-';
+            }
+
+            .indications__item--modality {
+                height: auto;
+                padding-bottom: 24px;
+                transition: padding, height, .5s ease;
+            }
+        }
+    }
+}
